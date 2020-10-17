@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 // COMPONENTS
-import GliderGun from "./components/GliderGun";
+import GameOfLife from "./components/GameOfLife";
 
 // ROUTES
 // import { Route } from "react-router-dom";
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       GAME OF LIFE
-      <GliderGun />
+      <GameOfLife />
     </div>
   );
 }
