@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import produce from "immer"
+// import Preset from "./Presets.js";
 
 const numRows = 50;
 const numCols = 50;
@@ -28,7 +29,7 @@ const generateGrid = () => {
 }
 
 
-const GameOfLife = props => {
+const GameOfLife = (props) => {
   const [grid, setGrid] = useState(() => {
     return generateGrid()
   });
@@ -41,6 +42,103 @@ const GameOfLife = props => {
 
   const activeRef = useRef(active);
   activeRef.current = active
+
+  // PRESETS
+
+  const randomSeed = () => {
+    const newGrid = generateGrid(grid)
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        if (Math.floor(Math.random() * 4) === 1) {
+          newGrid[i][j] = true
+        }
+      }
+    }
+    setGrid(newGrid)
+  }
+
+  const oscillatorSeed = () => {
+    let newGrid = generateGrid(grid)
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        if (i === 4 && j === 3) {
+          newGrid[i][j] = true
+        }
+        if (i === 4 && j === 4) {
+          newGrid[i][j] = true
+        }
+        if (i === 4 && j === 5) {
+          newGrid[i][j] = true
+        }
+      }
+    }
+    setGrid(newGrid)
+  }
+
+  const gliderSeed = () => {
+    let newGrid = generateGrid(grid);
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        if (i === 0 && j === 2) {
+          newGrid[i][j] = true
+        }
+        if (i === 1 && j === 0) {
+          newGrid[i][j] = true
+        }
+        if (i === 1 && j === 2) {
+          newGrid[i][j] = true
+        }
+        if (i === 2 && j === 1) {
+          newGrid[i][j] = true
+        }
+        if (i === 2 && j === 2) {
+          newGrid[i][j] = true
+        }
+      }
+    }
+    setGrid(newGrid)
+  }
+
+  const spaceShipSeed = () => {
+    let newGrid = generateGrid(grid)
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        //make a quarter of the cells alive at start
+        if (i === 1 && j === 1) {
+          newGrid[i][j] = true
+        }
+        if (i === 1 && j === 4) {
+          newGrid[i][j] = true
+        }
+        if (i === 2 && j === 5) {
+          newGrid[i][j] = true
+        }
+        if (i === 3 && j === 1) {
+          newGrid[i][j] = true
+        }
+        if (i === 3 && j === 5) {
+          newGrid[i][j] = true
+        }
+        if (i === 4 && j === 2) {
+          newGrid[i][j] = true
+        }
+        if (i === 4 && j === 3) {
+          newGrid[i][j] = true
+        }
+        if (i === 4 && j === 4) {
+          newGrid[i][j] = true
+        }
+        if (i === 4 && j === 5) {
+          newGrid[i][j] = true
+        }
+      }
+    }
+    // set new grid to state
+    setGrid(newGrid)
+  }
 
 
 
@@ -79,13 +177,15 @@ const GameOfLife = props => {
       });
     });
 
-    setTimeout(runSimulation, 1000)
+    setTimeout(runSimulation, 50)
   }, [])
+
+
 
   useEffect(() => {
     const interval = setInterval(() => {
       setGeneration(counter => counter + 1);
-    }, 1000);
+    }, 50);
 
     return () => {
       clearInterval(interval)
@@ -119,16 +219,32 @@ const GameOfLife = props => {
       }}>
         clear
       </button>
-      <button onClick={() => {
-        const rows = [];
 
-        for (let i = 0; i < numRows; i++) {
-          rows.push(Array.from(Array(numCols), () => Math.random() > .5 ? 1 : 0))
-        }
-        setGrid(rows)
-      }}>
-        random
-      </button>
+      <div>
+        <h3>PRESETS</h3>
+        {/* <button onClick={() => {
+          const rows = [];
+
+          for (let i = 0; i < numRows; i++) {
+            rows.push(Array.from(Array(numCols), () => Math.random() > .5 ? 1 : 0))
+          }
+          setGrid(rows)
+        }}>
+          random
+        </button> */}
+        <button onClick={randomSeed}>
+          Random
+        </button>
+        <button onClick={oscillatorSeed}>
+          Oscillator
+        </button>
+        <button onClick={gliderSeed}>
+          Glider
+        </button>
+        <button onClick={spaceShipSeed}>
+          Space Ship
+        </button>
+      </div>
       <div style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${numCols}, 20px)`
