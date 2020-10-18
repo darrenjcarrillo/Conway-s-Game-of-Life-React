@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 import produce from "immer"
 
 const numRows = 50;
@@ -33,12 +33,19 @@ const GameOfLife = props => {
     return generateGrid()
   });
 
+
   // Set state to button
   const [active, setActive] = useState(false);
 
+  const [generation, setGeneration] = useState(0)
 
   const activeRef = useRef(active);
   activeRef.current = active
+
+
+
+
+
 
   // useCallback - to not be recreated every render
   const runSimulation = useCallback(() => {
@@ -72,26 +79,43 @@ const GameOfLife = props => {
       });
     });
 
-    setTimeout(runSimulation, 100);
+    setTimeout(runSimulation, 1000)
   }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGeneration(counter => counter + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
 
   return (
     <>
       <button onClick={() => {
         setActive(!active)
+
         if (!active) {
           activeRef.current = true;
           runSimulation();
+          setGeneration(generation + 1)
+
         }
       }}>
         {active ? 'stop' : 'start'}
       </button>
 
       <button onClick={() => {
+        setGeneration(0)
         setGrid(generateGrid())
         if (active) {
           return setActive(!active)
         }
+
+
       }}>
         clear
       </button>
@@ -129,6 +153,7 @@ const GameOfLife = props => {
           )
         )}
       </div>
+      <div><h2>GENERATION {active ? generation : 'Inactive'}</h2></div>
     </>
   )
 }
