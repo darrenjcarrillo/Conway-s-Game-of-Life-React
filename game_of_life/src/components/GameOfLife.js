@@ -141,10 +141,6 @@ const GameOfLife = (props) => {
   }
 
 
-
-
-
-
   // useCallback - to not be recreated every render
   const runSimulation = useCallback(() => {
     // Base Case - Kind of like recursion
@@ -177,61 +173,69 @@ const GameOfLife = (props) => {
       });
     });
 
-    setTimeout(runSimulation, 50)
-  }, [])
-
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
+    // Generation render update
+    const runGeneration = (() => {
       setGeneration(counter => counter + 1);
-    }, 50);
+    })
 
-    return () => {
-      clearInterval(interval)
-    }
+    setTimeout(runSimulation, 100)
+    setTimeout(runGeneration)
+
   }, [])
 
+  // BUTTONS Function
+  // const playButton = () => {
+  //   // setActive(!active)
+  //   // if (!active) {
+  //   //   activeRef.current = true;
+  //   //   runSimulation();
+  //   // }
+  //   setActive(!active)
+  //   if (!active) {
+  //     activeRef.current = true;
+  //     runSimulation();
+  //   }
+  // }
+
+  const playPausedButton = () => {
+    setActive(!active)
+    if (!active) {
+      activeRef.current = true;
+      runSimulation();
+    } else {
+      const interval = setInterval(() => {
+        clearInterval(interval)
+      })
+    }
+  }
+
+  const clearButton = () => {
+    setGeneration(0)
+    setGrid(generateGrid())
+    if (active) {
+      return setActive(!active)
+    }
+  }
+
+  const fastForwardButton = () => {
+    setTimeout(runSimulation, 20)
+  }
 
   return (
     <>
-      <button onClick={() => {
-        setActive(!active)
-
-        if (!active) {
-          activeRef.current = true;
-          runSimulation();
-          setGeneration(generation + 1)
-
-        }
-      }}>
+      <button className="playButton" onClick={playPausedButton}>
         {active ? 'stop' : 'start'}
       </button>
 
-      <button onClick={() => {
-        setGeneration(0)
-        setGrid(generateGrid())
-        if (active) {
-          return setActive(!active)
-        }
-
-
-      }}>
+      <button className="clearButton" onClick={clearButton}>
         clear
       </button>
+      <button className="fastForwardButton" onClick={fastForwardButton}>
+        fast forward
+      </button>
 
-      <div>
+      <div className="presetsContainer">
         <h3>PRESETS</h3>
-        {/* <button onClick={() => {
-          const rows = [];
-
-          for (let i = 0; i < numRows; i++) {
-            rows.push(Array.from(Array(numCols), () => Math.random() > .5 ? 1 : 0))
-          }
-          setGrid(rows)
-        }}>
-          random
-        </button> */}
         <button onClick={randomSeed}>
           Random
         </button>
@@ -245,7 +249,7 @@ const GameOfLife = (props) => {
           Space Ship
         </button>
       </div>
-      <div style={{
+      <div className='mainGrid' style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${numCols}, 20px)`
       }}>
@@ -269,7 +273,7 @@ const GameOfLife = (props) => {
           )
         )}
       </div>
-      <div><h2>GENERATION {active ? generation : 'Inactive'}</h2></div>
+      <div className="generationContainer" ><h2>GENERATION {generation}</h2></div>
     </>
   )
 }
