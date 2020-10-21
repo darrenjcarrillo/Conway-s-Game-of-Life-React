@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import produce from "immer"
 // import Preset from "./Presets.js";
+import "./GameOfLife.scss";
 
 const numRows = 50;
 const numCols = 50;
@@ -29,7 +30,7 @@ const generateGrid = () => {
 }
 
 
-const GameOfLife = (props) => {
+const GameOfLife = props => {
   const [grid, setGrid] = useState(() => {
     return generateGrid()
   });
@@ -140,6 +141,156 @@ const GameOfLife = (props) => {
     setGrid(newGrid)
   }
 
+  const acornSeed = () => {
+    let newGrid = generateGrid(grid)
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        if (i === 26 && j === 32) {
+          newGrid[i][j] = true
+        }
+        if (i === 28 && j === 31) {
+          newGrid[i][j] = true
+        }
+        if (i === 28 && j === 32) {
+          newGrid[i][j] = true
+        }
+        if (i === 28 && j === 37) {
+          newGrid[i][j] = true
+        }
+        if (i === 28 && j === 36) {
+          newGrid[i][j] = true
+        }
+        if (i === 28 && j === 35) {
+          newGrid[i][j] = true
+        }
+        if (i === 27 && j === 34) {
+          newGrid[i][j] = true
+        }
+      }
+    }
+    setGrid(newGrid)
+  }
+
+  const gosperGliderGun = () => {
+    let newGrid = generateGrid(grid)
+
+    for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+        // first box
+        if (i === 10 && j === 4) {
+          newGrid[i][j] = true
+        }
+        if (i === 9 && j === 4) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 5) {
+          newGrid[i][j] = true
+        }
+        if (i === 9 && j === 5) {
+          newGrid[i][j] = true
+        }
+        // Glider
+        if (i === 11 && j === 14) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 14) {
+          newGrid[i][j] = true
+        }
+        if (i === 9 && j === 14) {
+          newGrid[i][j] = true
+        }
+        if (i === 8 && j === 15) {
+          newGrid[i][j] = true
+        }
+        if (i === 7 && j === 16) {
+          newGrid[i][j] = true
+        }
+        if (i === 7 && j === 17) {
+          newGrid[i][j] = true
+        }
+        if (i === 12 && j === 15) {
+          newGrid[i][j] = true
+        }
+        if (i === 13 && j === 16) {
+          newGrid[i][j] = true
+        }
+        if (i === 13 && j === 17) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 18) {
+          newGrid[i][j] = true
+        }
+        if (i === 8 && j === 19) {
+          newGrid[i][j] = true
+        }
+        if (i === 12 && j === 19) {
+          newGrid[i][j] = true
+        }
+        if (i === 9 && j === 20) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 20) {
+          newGrid[i][j] = true
+        }
+        if (i === 11 && j === 20) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 21) {
+          newGrid[i][j] = true
+        }
+        if (i === 9 && j === 24) {
+          newGrid[i][j] = true
+        }
+        if (i === 8 && j === 24) {
+          newGrid[i][j] = true
+        }
+        if (i === 7 && j === 24) {
+          newGrid[i][j] = true
+        }
+        if (i === 9 && j === 25) {
+          newGrid[i][j] = true
+        }
+        if (i === 8 && j === 25) {
+          newGrid[i][j] = true
+        }
+        if (i === 7 && j === 25) {
+          newGrid[i][j] = true
+        }
+        if (i === 6 && j === 26) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 26) {
+          newGrid[i][j] = true
+        }
+        if (i === 5 && j === 28) {
+          newGrid[i][j] = true
+        }
+        if (i === 6 && j === 28) {
+          newGrid[i][j] = true
+        }
+        if (i === 10 && j === 28) {
+          newGrid[i][j] = true
+        }
+        if (i === 11 && j === 28) {
+          newGrid[i][j] = true
+        }
+        if (i === 7 && j === 38) {
+          newGrid[i][j] = true
+        }
+        if (i === 8 && j === 38) {
+          newGrid[i][j] = true
+        }
+        if (i === 7 && j === 39) {
+          newGrid[i][j] = true
+        }
+        if (i === 8 && j === 39) {
+          newGrid[i][j] = true
+        }
+      }
+    }
+    setGrid(newGrid)
+  }
 
   // useCallback - to not be recreated every render
   const runSimulation = useCallback(() => {
@@ -178,24 +329,12 @@ const GameOfLife = (props) => {
       setGeneration(counter => counter + 1);
     })
 
-    setTimeout(runSimulation, 100)
+    setTimeout(runSimulation, 50)
     setTimeout(runGeneration)
 
   }, [])
 
   // BUTTONS Function
-  // const playButton = () => {
-  //   // setActive(!active)
-  //   // if (!active) {
-  //   //   activeRef.current = true;
-  //   //   runSimulation();
-  //   // }
-  //   setActive(!active)
-  //   if (!active) {
-  //     activeRef.current = true;
-  //     runSimulation();
-  //   }
-  // }
 
   const playPausedButton = () => {
     setActive(!active)
@@ -222,40 +361,14 @@ const GameOfLife = (props) => {
   }
 
   return (
-    <>
-      <button className="playButton" onClick={playPausedButton}>
-        {active ? 'stop' : 'start'}
-      </button>
-
-      <button className="clearButton" onClick={clearButton}>
-        clear
-      </button>
-      <button className="fastForwardButton" onClick={fastForwardButton}>
-        fast forward
-      </button>
-
-      <div className="presetsContainer">
-        <h3>PRESETS</h3>
-        <button onClick={randomSeed}>
-          Random
-        </button>
-        <button onClick={oscillatorSeed}>
-          Oscillator
-        </button>
-        <button onClick={gliderSeed}>
-          Glider
-        </button>
-        <button onClick={spaceShipSeed}>
-          Space Ship
-        </button>
+    <div className="main-container">
+      <div className="generationContainer" >
+        <h2>GENERATION {generation}</h2>
       </div>
-      <div className='mainGrid' style={{
-        display: 'grid',
-        gridTemplateColumns: `repeat(${numCols}, 20px)`
-      }}>
+      <div className='mainGrid'>
         {grid.map((rows, i) =>
           rows.map((col, k) =>
-            <div id='div'
+            <div id='grid-container'
               key={`${i}-${k}`}
               // Update grid when clicked/toggle
               onClick={() => {
@@ -265,19 +378,66 @@ const GameOfLife = (props) => {
                 setGrid(newGrid)
               }}
               style={{
-                width: 20,
-                height: 20,
-                backgroundColor: grid[i][k] ? 'rgb(60, 179, 113)' : undefined,
-                border: 'solid 1px black'
+                width: 15,
+                height: 12,
+                backgroundColor: grid[i][k] ? 'rgb(0, 255, 65)' : undefined,
+                border: 'solid .1px black'
               }}></div>
           )
         )}
       </div>
-      <div className="generationContainer" ><h2>GENERATION {generation}</h2></div>
-    </>
+      <div className="buttonsContainer">
+        <div className="rightButtons">
+          <button onClick={playPausedButton}>
+            {active ? 'stop' : 'start'}
+          </button>
+        </div>
+        <div className="leftButtons">
+          <div>
+            <button className="clearButton" onClick={clearButton}>
+              Clear
+            </button>
+          </div>
+          <div>
+            <button className="fastForwardButton" onClick={fastForwardButton}>
+              Fast
+            </button>
+          </div>
+          <div>
+            <button onClick={randomSeed}>
+              Random
+            </button>
+          </div>
+          <div>
+            <button onClick={oscillatorSeed}>
+              Osci
+            </button>
+          </div>
+          <div>
+            <button onClick={gliderSeed}>
+              Glider
+            </button>
+          </div>
+          <div>
+            <button onClick={spaceShipSeed}>
+              S-Ship
+            </button>
+          </div>
+          <div>
+            <button onClick={acornSeed}>
+              Acorn
+            </button>
+          </div>
+          <div>
+            <button onClick={gosperGliderGun}>
+              G-Gun
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
   )
 }
-
-
 
 export default GameOfLife;

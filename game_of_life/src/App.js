@@ -3,6 +3,7 @@ import './App.css';
 
 // COMPONENTS
 import GameOfLife from "./components/GameOfLife";
+import About from "./components/About";
 
 // ROUTES
 // import { Route } from "react-router-dom";
@@ -10,8 +11,11 @@ import GameOfLife from "./components/GameOfLife";
 function App() {
   return (
     <div className="App">
-      GAME OF LIFE
+      <div className="title">
+        <h2>GAME OF LIFE</h2>
+      </div>
       <GameOfLife />
+      <About />
     </div>
   );
 }
