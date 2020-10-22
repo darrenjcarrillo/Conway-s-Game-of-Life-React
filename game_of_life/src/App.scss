@@ -1,12 +1,14 @@
 @import "~antd/dist/antd.css";
 
 
-@import url("https://fonts.googleapis.com/css2?family=Monofett&family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monofett&family=Monoton&family=Major+Mono+Display&display=swap");
 
 
 body {
   // font-family: 'Monoton', cursive;
   // background-color: black;
+  font-family: 'Monofett', cursive;
+  font-family: 'Major Mono Display', monospace;
   background: repeating-linear-gradient(
     to bottom,
     #0f0a1e,
@@ -18,7 +20,9 @@ body {
 }
 
 h1,h2,h3,h4,h5 {
+
   font-family: 'Monofett', cursive;
+  font-family: 'Major Mono Display', monospace;
   // font-family: 'Press Start 2P', cursive
 }
 
@@ -26,13 +30,20 @@ h1,h2,h3,h4,h5 {
 .App {
 
   .title {
-    h2 {
-      color: #00FF41;
+      font-family: 'Major Mono Display', monospace;
+      color: #00F5FB;
       font-size: 100px;
       margin: auto 0;
       animation: blink-animation 1s steps(5, start) infinite;
       -webkit-animation: blink-animation 1s steps(5, start) infinite;
-    }
+      // -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(255,139,253,0); 
+      // box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(255,139,253,0);
+      text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF01EE 0px 0px 20px, #FF01EE 0px 0px 30px, #FF01EE 0px 0px 40px, #FF01EE 0px 0px 50px, #FF01EE 0px 0px 75px;
+  }
+
+  .componentsContainer {
+    display: flex;
+    justify-content: center;
   }
 }
 
