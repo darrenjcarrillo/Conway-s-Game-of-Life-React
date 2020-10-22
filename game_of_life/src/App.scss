@@ -1,0 +1,48 @@
+@import "~antd/dist/antd.css";
+
+
+@import url("https://fonts.googleapis.com/css2?family=Monofett&family=Monoton&display=swap");
+
+
+body {
+  // font-family: 'Monoton', cursive;
+  // background-color: black;
+  background: repeating-linear-gradient(
+    to bottom,
+    #0f0a1e,
+    #0f0a1e 2px,
+    lighten(#0f0a1e, 3%) 2px,
+    lighten(#0f0a1e, 3%) 4px
+  )
+  
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Monofett', cursive;
+  // font-family: 'Press Start 2P', cursive
+}
+
+
+.App {
+
+  .title {
+    h2 {
+      color: #00FF41;
+      font-size: 100px;
+      margin: auto 0;
+      animation: blink-animation 1s steps(5, start) infinite;
+      -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    }
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
