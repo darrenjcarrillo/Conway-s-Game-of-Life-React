@@ -2,8 +2,10 @@
 
 $bg: #333;
 $push-color: hsla(127, 100%, 28%, 1);
+// $push-color: #00F5FB;
 $red-color: hsla(10, 90%, 40%, 1);
-$neon-color: hsla(10, 90%, 40%, 1);
+// $red-color: #D100F1;
+// $neon-color: hsla(10, 90%, 40%, 1);
 
 $push-size: 240px;
 $red-push-size: 120px;
@@ -28,9 +30,6 @@ $red-push-size: 120px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(50, 15px);
-      // border: solid 1px #FF01EE;
-      //  border: solid 1px #00F5FB;
-
     }
   
   }
@@ -44,7 +43,7 @@ $red-push-size: 120px;
     justify-content: center;
     height: 5rem;
 
-    .rightButtons {
+    .leftButtons {
       width: 40%;
       display: flex;
       justify-content: center;
@@ -103,7 +102,7 @@ $red-push-size: 120px;
         
       }
     }
-    .leftButtons {
+    .rightButtons {
       width: 60%;
       display: flex;
       flex-wrap: wrap;

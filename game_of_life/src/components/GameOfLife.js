@@ -391,12 +391,12 @@ const GameOfLife = props => {
         </div>
       </div>
       <div className="buttonsContainer">
-        <div className="rightButtons">
+        <div className="leftButtons">
           <button onClick={playPausedButton}>
             {active ? 'stop' : 'start'}
           </button>
         </div>
-        <div className="leftButtons">
+        <div className="rightButtons">
           <div>
             <button className="clearButton" onClick={clearButton}>
               Clear
