@@ -363,36 +363,40 @@ const GameOfLife = props => {
   return (
     <div className="main-container">
       <div className="generationContainer" >
-        <h2>GENERATION {generation}</h2>
+
+        <h2>GENERATION <span>{generation}</span></h2>
       </div>
-      <div className='mainGrid'>
-        {grid.map((rows, i) =>
-          rows.map((col, k) =>
-            <div id='grid-container'
-              key={`${i}-${k}`}
-              // Update grid when clicked/toggle
-              onClick={() => {
-                const newGrid = produce(grid, gridCopy => {
-                  gridCopy[i][k] = grid[i][k] ? 0 : 1;
-                });
-                setGrid(newGrid)
-              }}
-              style={{
-                width: 15,
-                height: 12,
-                backgroundColor: grid[i][k] ? 'rgb(0, 255, 65)' : undefined,
-                border: 'solid .1px black'
-              }}></div>
-          )
-        )}
+      <div className="mainGridContainer">
+        <div className='mainGrid'>
+          {grid.map((rows, i) =>
+            rows.map((col, k) =>
+              <div id='grid-container'
+                key={`${i}-${k}`}
+                // Update grid when clicked/toggle
+                onClick={() => {
+                  const newGrid = produce(grid, gridCopy => {
+                    gridCopy[i][k] = grid[i][k] ? 0 : 1;
+                  });
+                  setGrid(newGrid)
+                }}
+                style={{
+                  width: 15,
+                  height: 12,
+                  // backgroundColor: grid[i][k] ? 'rgb(252, 116, 254)' : undefined,
+                  backgroundColor: grid[i][k] ? 'rgb(0, 245, 251)' : undefined,
+                  border: 'solid .1px black'
+                }}></div>
+            )
+          )}
+        </div>
       </div>
       <div className="buttonsContainer">
-        <div className="rightButtons">
+        <div className="leftButtons">
           <button onClick={playPausedButton}>
             {active ? 'stop' : 'start'}
           </button>
         </div>
-        <div className="leftButtons">
+        <div className="rightButtons">
           <div>
             <button className="clearButton" onClick={clearButton}>
               Clear

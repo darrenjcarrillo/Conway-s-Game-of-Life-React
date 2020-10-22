@@ -2,36 +2,48 @@
 
 $bg: #333;
 $push-color: hsla(127, 100%, 28%, 1);
+// $push-color: #00F5FB;
 $red-color: hsla(10, 90%, 40%, 1);
+// $red-color: #D100F1;
+// $neon-color: hsla(10, 90%, 40%, 1);
 
 $push-size: 240px;
+$red-push-size: 120px;
 
 .main-container {
   // background-color: aqua;
+  width: 50%;
 
-  .mainGrid {
-    display: flex;
-    justify-content: center;
-    width: 40%;
-    padding: 7px 0;
-    height: 30%;
+
+  .mainGridContainer {
+    border: solid 1px #FF01EE;
+    border-radius: 10px;
+    // padding: 2px;
+    width: 80%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(50, 15px);
-    border: solid 1px #00FF41;
-      .grid-container {
-        // display: flex;
+    box-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF01EE 0px 0px 20px, #FF01EE 0px 0px 30px, #FF01EE 0px 0px 40px, #FF01EE 0px 0px 50px, #FF01EE 0px 0px 75px;
+    .mainGrid {
+      display: flex;
+      justify-content: center;
+      padding: 1px;
+      height: 30%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(50, 15px);
     }
+  
   }
 
+ 
   .buttonsContainer {
-    width: 45%;
-    margin: 1rem auto;
+
+    width: 87%;
+    margin: 2rem auto;
     display: flex;
     justify-content: center;
     height: 5rem;
 
-    .rightButtons {
+    .leftButtons {
       width: 40%;
       display: flex;
       justify-content: center;
@@ -39,11 +51,17 @@ $push-size: 240px;
       height: 300%;
 
       button {
+        color: white;
+        font-weight: 600;
+        font-size: 20px;
         border-radius: 50%;
         width: 60%;
         height: 80%;
+        border: none;
         outline: none;
-          
+        cursor: pointer;
+        transition: box-shadow 200ms;
+
          box-shadow: 
             inset 0 $push-size/32 0 lighten($push-color, 5%),
             inset 0 (-$push-size/32) 0 darken($push-color, 5%),
@@ -56,10 +74,11 @@ $push-size: 240px;
             inset 0 $push-size/2.5 $push-size/7.5 darken($push-color, 5%),
             inset 0 0 $push-size/10 $push-size/6 darken($push-color, 10%),
             0 $push-size/20 0 rgba(0, 0, 0, .3);
+
         
         
           &:active,
-          &:hover,
+          // &:hover,
           &.is-pushed {
             box-shadow: 
               inset 0 $push-size/32 0 lighten($push-color, 5%),
@@ -83,7 +102,7 @@ $push-size: 240px;
         
       }
     }
-    .leftButtons {
+    .rightButtons {
       width: 60%;
       display: flex;
       flex-wrap: wrap;
@@ -96,48 +115,54 @@ $push-size: 240px;
       }
 
       button {
+
         color: white;
+        font-weight: 600;
         width: 100%;
         border-radius: 50%;
         height: 100%;
         outline:none;
+        border: none;
+        cursor: pointer;
+        transition: box-shadow 200ms;
           
          box-shadow: 
-            inset 0 $push-size/32 0 lighten($red-color, 5%),
-            inset 0 (-$push-size/32) 0 darken($red-color, 5%),
-            inset 0 0 0 $push-size/32 darken($red-color, 3%),
-            inset 0 0 0 $push-size/12 $red-color,
-            inset 0 0 0 $push-size/10 darken($red-color, 20%),
-            inset 0 0 0 $push-size/9.2 darken($red-color, 50%),
-            inset 0 0 0 $push-size/7.5 transparentize(lighten($red-color, 30%), .3),
-            inset 0 0 0 $push-size/5.5 $red-color,
-            inset 0 $push-size/2.5 $push-size/7.5 darken($red-color, 5%),
-            inset 0 0 $push-size/10 $push-size/6 darken($red-color, 10%),
-            0 $push-size/20 0 rgba(0, 0, 0, .3);
+            inset 0 $red-push-size/32 0 lighten($red-color, 5%),
+            inset 0 (-$red-push-size/32) 0 darken($red-color, 5%),
+            inset 0 0 0 $red-push-size/32 darken($red-color, 3%),
+            inset 0 0 0 $red-push-size/12 $red-color,
+            inset 0 0 0 $red-push-size/10 darken($red-color, 20%),
+            inset 0 0 0 $red-push-size/9.2 darken($red-color, 80%),
+            inset 0 0 0 $red-push-size/7.5 transparentize(lighten($red-color, 30%), .3),
+            inset 0 0 0 $red-push-size/5.5 $red-color,
+            inset 0 $red-push-size/2.5 $red-push-size/7.5 darken($red-color, 5%),
+            inset 0 0 $red-push-size/10 $red-push-size/6 darken($red-color, 10%),
+            0 $red-push-size/20 0 rgba(0, 0, 0, .3);
         
         
           &:active,
-          &:hover,
+          // &:hover,
           &.is-pushed {
             box-shadow: 
-              inset 0 $push-size/32 0 lighten($red-color, 5%),
-              inset 0 (-$push-size/32) 0 darken($red-color, 5%),
-              inset 0 0 0 $push-size/32 darken($red-color, 3%),
-              inset 0 0 0 $push-size/12 $red-color,
-              inset 0 0 0 $push-size/10 darken($red-color, 20%),
-              inset 0 0 0 $push-size/8.5 darken($red-color, 40%),
-              inset 0 0 0 $push-size/7.5 transparentize(lighten($red-color, 30%), .8),
-              inset 0 0 0 $push-size/5.5 darken($red-color, 3%),
-              inset 0 $push-size/2.5 $push-size/7.5 darken($red-color, 8%),
-              inset 0 0 $push-size/10 $push-size/6 darken($red-color, 15%),
-              0 $push-size/20 0 rgba(0, 0, 0, .3);
+              inset 0 $red-push-size/32 0 lighten($red-color, 5%),
+              inset 0 (-$red-push-size/32) 0 darken($red-color, 5%),
+              inset 0 0 0 $red-push-size/32 darken($red-color, 3%),
+              inset 0 0 0 $red-push-size/12 $red-color,
+              inset 0 0 0 $red-push-size/10 darken($red-color, 20%),
+              inset 0 0 0 $red-push-size/8.5 darken($red-color, 40%),
+              inset 0 0 0 $red-push-size/7.5 transparentize(lighten($red-color, 30%), .8),
+              inset 0 0 0 $red-push-size/5.5 darken($red-color, 3%),
+              inset 0 $red-push-size/2.5 $red-push-size/7.5 darken($red-color, 8%),
+              inset 0 0 $red-push-size/10 $red-push-size/6 darken($red-color, 15%),
+              0 $red-push-size/20 0 rgba(0, 0, 0, .3);
             background-color: darken($red-color, 2%);
                 
             &:after {
-              bottom: $push-size/20 + $push-size/15;
+              bottom: $red-push-size/20 + $red-push-size/15;
               border-width: 0;
             }
         }
+
       }
 
     }
@@ -148,8 +173,10 @@ $push-size: 240px;
     margin: 0 auto;
 
     h2 {
-      color: #00FF41;
-      font-size: 50px;
+      color: #00F5FB;
+      font-weight: 600;
+      font-size: 25px;
+      text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF01EE 0px 0px 20px, #FF01EE 0px 0px 30px, #FF01EE 0px 0px 40px, #FF01EE 0px 0px 50px, #FF01EE 0px 0px 75px;
     }
   }
 }
