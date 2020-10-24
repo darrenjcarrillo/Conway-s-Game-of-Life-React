@@ -10,7 +10,9 @@ const About = props => {
     <div className="about">
       <div>
         <h3>ABOUT</h3>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p>The creator of this "playerless game" was named John Conway.</p>
+        <p>Turing complete,also called computationally universal, is a term used in computability theory to describe abstract machines, usually called automata.</p>
+        <p>HTML is not Turing complete without JavaScript because HTML cannot actively change the state of the system without JavaScript.</p>
       </div>
     </div>
   )

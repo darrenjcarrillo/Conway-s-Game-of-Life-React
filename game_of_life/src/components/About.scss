@@ -1,12 +1,17 @@
 @import "../App.scss";
 
 .about {
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF01EE 0px 0px 20px, #FF01EE 0px 0px 30px, #FF01EE 0px 0px 40px, #FF01EE 0px 0px 50px, #FF01EE 0px 0px 75px;
   width: 20%;
   margin-top: 10rem;
+  // font-weight: 600;
   color: white;
+  text-align: justify;
   h3 {
     color: white;
-
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
   }
 }
 

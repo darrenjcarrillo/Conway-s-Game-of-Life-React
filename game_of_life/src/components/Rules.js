@@ -10,7 +10,9 @@ const Rules = props => {
     <div className="rules">
       <div>
         <h3>Rules</h3>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p>Any live cell with two or three live neighbors survives.</p>
+        <p>Any dead cell with three live neighbors becomes a live cell.</p>
+        <p>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</p>
       </div>
     </div>
   )
