@@ -10,9 +10,10 @@ const About = props => {
     <div className="about">
       <div>
         <h3>ABOUT</h3>
-        <p>The creator of this "playerless game" was named John Conway.</p>
-        <p>Turing complete,also called computationally universal, is a term used in computability theory to describe abstract machines, usually called automata.</p>
-        <p>HTML is not Turing complete without JavaScript because HTML cannot actively change the state of the system without JavaScript.</p>
+        <p>The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.</p>
+        <p>It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. </p>
+        <p>One interacts with the Game of Life by creating an initial configuration and observing how it evolves</p>
+        <p>It is Turing complete and can simulate a universal constructor or any other Turing machine.</p>
       </div>
     </div>
   )
